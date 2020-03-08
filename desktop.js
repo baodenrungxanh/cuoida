@@ -1,6 +1,9 @@
 ﻿alert(123)
 var thumbnailWidth = 155;
 
+var allowLoadMore = true;
+var loadTimes = 0;
+var nextLink = "";
 function displayAlbum(id) {
 
     var albumString = $(`#news-${id} input[type='hidden'] `).val();
@@ -48,6 +51,49 @@ function convert(id) {
 
 
 
-var allowLoadMore = true;
-var loadTimes = 0;
-var nextLink = "";
+
+
+
+var autoReloadTimeout = null;
+// Nếu isForceLoadMore == true, thì lần loadMore trước chưa hoàn tất cũng cho phép load more
+function requestLoadMore(isForceLoadMore = false) {
+    try {
+        // Chỉ cho phép load-more khi lần load-more trước đã hoàn tất
+        if (allowLoadMore == false && isForceLoadMore == false) return;
+
+        allowLoadMore = false;
+
+        $("#loader").show();
+
+        var link = $("#next-button").val();
+
+        $.get(link, function (response) {
+            var responseDOM = $(response);
+
+            $("#post-list").append(responseDOM.find("#post-list").html());
+            $("#next-button").val(responseDOM.find("#next-button").val())
+
+            eval(responseDOM.find("#ids").html());
+        }).done(function () {
+            loadTimes++;
+            // Chỉ ẩn spinner khi đã load-more hoàn tất
+            $("#loader").hide();
+
+            var newLoadMoreLink = $("#next-button").val();
+            if (newLoadMoreLink != '' && link != newLoadMoreLink) {
+                allowLoadMore = true;
+            }
+        }).fail(function (e) {
+            alert(e)
+            clearTimeout(autoReloadTimeout);
+            autoReloadTimeout = null;
+            autoReloadTimeout = setTimeout(function () {
+                requestLoadMore(true);
+            }, 1000);
+        }).always(function () {
+            ga('send', 'event', 'Timelines', 'Load more', loadTimes);
+        });
+    } catch (be) {
+alert(be)
+    }
+}
