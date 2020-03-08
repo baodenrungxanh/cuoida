@@ -72,49 +72,49 @@ $(document).ready(function () {
     });
 });
 
-//var autoReloadTimeout = null;
-//// Nếu isForceLoadMore == true, thì lần loadMore trước chưa hoàn tất cũng cho phép load more
-//function requestLoadMore(isForceLoadMore) {
-//    if (isForceLoadMore === undefined) {
-//        isForceLoadMore = false;
-//    }
+var autoReloadTimeout = null;
+// Nếu isForceLoadMore == true, thì lần loadMore trước chưa hoàn tất cũng cho phép load more
+function requestLoadMore(isForceLoadMore) {
+    if (isForceLoadMore === undefined) {
+        isForceLoadMore = false;
+    }
 
-//    // Chỉ cho phép load-more khi lần load-more trước đã hoàn tất
-//    if (allowLoadMore == false && isForceLoadMore == false) return;
+    // Chỉ cho phép load-more khi lần load-more trước đã hoàn tất
+    if (allowLoadMore == false && isForceLoadMore == false) return;
 
-//    allowLoadMore = false;
+    allowLoadMore = false;
 
-//    $("#loader").show();
+    $("#loader").show();
 
-//    var link = $("#next-button").val();
+    var link = $("#next-button").val();
 
-//    $.get(link, function (response) {
-//        var responseDOM = $(response);
+    $.get(link, function (response) {
+        var responseDOM = $(response);
 
-//        $("#post-list").append(responseDOM.find("#post-list").html());
-//        $("#next-button").val(responseDOM.find("#next-button").val())
+        $("#post-list").append(responseDOM.find("#post-list").html());
+        $("#next-button").val(responseDOM.find("#next-button").val())
 
-//        eval(responseDOM.find("#ids").html());
-//    }).done(function () {
-//        loadTimes++;
-//        // Chỉ ẩn spinner khi đã load-more hoàn tất
-//        $("#loader").hide();
+        eval(responseDOM.find("#ids").html());
+    }).done(function () {
+        loadTimes++;
+        // Chỉ ẩn spinner khi đã load-more hoàn tất
+        $("#loader").hide();
 
-//        var newLoadMoreLink = $("#next-button").val();
-//        if (newLoadMoreLink != '' && link != newLoadMoreLink) {
-//            allowLoadMore = true;
-//        }
-//    }).fail(function () {
+        var newLoadMoreLink = $("#next-button").val();
+        if (newLoadMoreLink != '' && link != newLoadMoreLink) {
+            allowLoadMore = true;
+        }
+    }).fail(function () {
 
-//        clearTimeout(autoReloadTimeout);
-//        autoReloadTimeout = null;
-//        autoReloadTimeout = setTimeout(function () {
-//            requestLoadMore(true);
-//        }, 1000);
-//    }).always(function () {
-//        ga('send', 'event', 'Timelines', 'Load more', loadTimes);
-//    });
-//}
+        clearTimeout(autoReloadTimeout);
+        autoReloadTimeout = null;
+        autoReloadTimeout = setTimeout(function () {
+            requestLoadMore(true);
+        }, 1000);
+    }).always(function () {
+        ga('send', 'event', 'Timelines', 'Load more', loadTimes);
+    });
+}
 
 //$(document).on('click', 'a[class="story__link"], a[class="view-detail-anchor"]', function (e) {
 //    e.preventDefault();
