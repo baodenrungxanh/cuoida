@@ -74,7 +74,10 @@ $(document).ready(function () {
 
 var autoReloadTimeout = null;
 // Nếu isForceLoadMore == true, thì lần loadMore trước chưa hoàn tất cũng cho phép load more
-function requestLoadMore(isForceLoadMore = false) {
+function requestLoadMore(isForceLoadMore) {
+    if (isForceLoadMore === undefined) {
+        isForceLoadMore = false;
+    }
     // Chỉ cho phép load-more khi lần load-more trước đã hoàn tất
     if (allowLoadMore == false && isForceLoadMore == false) return;
 
