@@ -175,31 +175,35 @@ function viewDetail(url) {
     });
 }
 
-//function openShare(url) {
-//    $("#share-modal .facebook-share-button")[0].setAttribute('href', url);
-//    $("#share-modal .zalo-share-button")[0].setAttribute('data-href', url);
-//    $("#share-modal").modal('show');
-//    ZaloSocialSDK.reload(); // Zalo sdk phải reload lại mới cập nhật data-href mới
-//}
+function openShare(url) {
+    $("#share-modal .facebook-share-button")[0].setAttribute('href', url);
+    $("#share-modal .zalo-share-button")[0].setAttribute('data-href', url);
+    $("#share-modal").modal('show');
+    ZaloSocialSDK.reload(); // Zalo sdk phải reload lại mới cập nhật data-href mới
+}
 
 var documentTitle = document.title;
 window.addEventListener('popstate', (event) => {
 
-    if (event.state != null && event.state != "") {
-        if (event.state.page == "detail") {
-            viewDetail(event.state.url, event.state.title);
-        }
+    try {
+        if (event.state != null && event.state != "") {
+            if (event.state.page == "detail") {
+                viewDetail(event.state.url, event.state.title);
+            }
 
-        if (event.state.page == "share") {
-            openShare(event.state.url);
-        }
+            if (event.state.page == "share") {
+                openShare(event.state.url);
+            }
 
-        document.title = event.state.title;
-    }
-    else {
-        $('#share-modal').modal("hide")
-        $('#detail-modal').modal("hide")
-        $("#detail-modal .modal-body").html('')
-        document.title = documentTitle;
+            document.title = event.state.title;
+        }
+        else {
+            $('#share-modal').modal("hide")
+            $('#detail-modal').modal("hide")
+            $("#detail-modal .modal-body").html('')
+            document.title = documentTitle;
+        }
+    } catch (e) {
+       alert(e.message)
     }
 });
