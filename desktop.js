@@ -18,14 +18,16 @@ function displayVideo(id) {
             this.onloadedmetadata = function (e) {
                 var height = $(this).height();
 
-                var os = new OnScreen({
-                    tolerance: height / 2,
-                    toggleClass: false
-                });
+               
 
                 try {
+                    var os = new OnScreen({
+                        tolerance: height / 2,
+                        toggleClass: false
+                    });
+
                     // Do something else when an element leaves
-                    os.on('leave', 'video', (element, event) => {
+                    os.on('leave', 'video', (element) => {
                         element.pause();
                     });
                 } catch (ess) {
