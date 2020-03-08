@@ -16,6 +16,13 @@ function displayVideo(id) {
 
         $("video:not([parsed='true'])").each(function () {
             this.onloadedmetadata = function (e) {
+                var height = $(this).height();
+
+                var os = new OnScreen({
+                    tolerance: height / 2,
+                    toggleClass: false
+                });
+
                
             }
         });
