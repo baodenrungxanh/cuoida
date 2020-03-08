@@ -26,12 +26,12 @@ function displayVideo(id) {
                 try {
                   
                 } catch (ess) {
-                    alert(ess)
+                    alert(ess.message)
                 }
             }
         });
     } catch (e) {
-        alert(e)
+        alert(e.message)
     }
 }
 
