@@ -10,7 +10,11 @@ function displayVideo(id) {
         var videoData = $(`#news-${id} input[type='hidden']`).val();
         videoData = videoData.replace(/'/g, '"');
         videoData = JSON.parse(videoData);
-      
+        $(`#news-${id} video `).attr('src', videoData.source);
+        $(`#news-${id} video `).attr('poster', videoData.poster);
+        $(`#news-${id} video `).attr('height', $("#post-list").width() * videoData.height / videoData.width);
+
+       
     } catch (e) {
         alert(e)
     }
