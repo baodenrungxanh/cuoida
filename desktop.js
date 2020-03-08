@@ -182,28 +182,28 @@ function openShare(url) {
     ZaloSocialSDK.reload(); // Zalo sdk phải reload lại mới cập nhật data-href mới
 }
 
-var documentTitle = document.title;
-window.addEventListener('popstate', (event) => {
+//var documentTitle = document.title;
+//window.addEventListener('popstate', (event) => {
 
-    try {
-        if (event.state != null && event.state != "") {
-            if (event.state.page == "detail") {
-                viewDetail(event.state.url, event.state.title);
-            }
+//    try {
+//        if (event.state != null && event.state != "") {
+//            if (event.state.page == "detail") {
+//                viewDetail(event.state.url, event.state.title);
+//            }
 
-            if (event.state.page == "share") {
-                openShare(event.state.url);
-            }
+//            if (event.state.page == "share") {
+//                openShare(event.state.url);
+//            }
 
-            document.title = event.state.title;
-        }
-        else {
-            $('#share-modal').modal("hide")
-            $('#detail-modal').modal("hide")
-            $("#detail-modal .modal-body").html('')
-            document.title = documentTitle;
-        }
-    } catch (e) {
-       alert(e.message)
-    }
-});
+//            document.title = event.state.title;
+//        }
+//        else {
+//            $('#share-modal').modal("hide")
+//            $('#detail-modal').modal("hide")
+//            $("#detail-modal .modal-body").html('')
+//            document.title = documentTitle;
+//        }
+//    } catch (e) {
+//       alert(e.message)
+//    }
+//});
