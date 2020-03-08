@@ -7,7 +7,10 @@ window.onerror = function () {
 
 function displayAlbum(msg, url, line, col, error) {
     alert(msg)
-  
+    alert(url)
+    alert(line)
+    alert(col)
+    alert(error)
 }
 
 function displayVideo(id) {
