@@ -183,7 +183,7 @@ function openShare(url) {
 }
 
 var documentTitle = document.title;
-window.addEventListener('popstate', (event) => {
+window.addEventListener('popstate', function(event) {
 
     try {
      
