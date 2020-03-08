@@ -183,27 +183,11 @@ function openShare(url) {
 }
 
 var documentTitle = document.title;
-//window.addEventListener('popstate', (event) => {
+window.addEventListener('popstate', (event) => {
 
-//    try {
-//        if (event.state != null && event.state != "") {
-//            if (event.state.page == "detail") {
-//                viewDetail(event.state.url, event.state.title);
-//            }
-
-//            if (event.state.page == "share") {
-//                openShare(event.state.url);
-//            }
-
-//            document.title = event.state.title;
-//        }
-//        else {
-//            $('#share-modal').modal("hide")
-//            $('#detail-modal').modal("hide")
-//            $("#detail-modal .modal-body").html('')
-//            document.title = documentTitle;
-//        }
-//    } catch (e) {
-//       alert(e.message)
-//    }
-//});
+    try {
+     
+    } catch (e) {
+       alert(e.message)
+    }
+});
