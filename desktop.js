@@ -1,6 +1,6 @@
 ﻿
 var thumbnailWidth = 155;
-
+alert(123)
 function displayAlbum(id) {
 
     var albumString = $(`#news-${id} input[type='hidden'] `).val();
@@ -78,6 +78,7 @@ function requestLoadMore(isForceLoadMore) {
     if (isForceLoadMore === undefined) {
         isForceLoadMore = false;
     }
+
     // Chỉ cho phép load-more khi lần load-more trước đã hoàn tất
     if (allowLoadMore == false && isForceLoadMore == false) return;
 
