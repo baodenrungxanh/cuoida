@@ -24,12 +24,9 @@ function displayVideo(id) {
                 });
 
                 try {
-                    // Do something else when an element leaves
-                    os.on('leave', 'video', (element, event) => {
-                        element.pause();
-                    });
-                } catch (e) {
-                    alert(e)
+                  
+                } catch (ess) {
+                    alert(ess)
                 }
             }
         });
