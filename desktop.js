@@ -32,10 +32,10 @@ function displayVideo(id) {
                 toggleClass: false
             });
 
-            //// Do something else when an element leaves
-            //os.on('leave', 'video', (element, event) => {
-            //    element.pause();
-            //});
+            // Do something else when an element leaves
+            os.on('leave', 'video', function(element, event) {
+                element.pause();
+            });
         }
     });
 }
