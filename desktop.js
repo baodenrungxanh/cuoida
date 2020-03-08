@@ -1,5 +1,10 @@
 ﻿var thumbnailWidth = 155;
 alert(123)
+
+window.onerror = function () {
+    alert("Error caught");
+};
+
 function displayAlbum(id) {
 
   
