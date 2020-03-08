@@ -1,5 +1,5 @@
 ﻿var thumbnailWidth = 155;
-
+alert(123)
 function displayAlbum(id) {
 
     var albumString = $(`#news-${id} input[type='hidden'] `).val();
