@@ -32,10 +32,10 @@ function displayVideo(id) {
                 toggleClass: false
             });
 
-            // Do something else when an element leaves
-            os.on('leave', 'video', (element, event) => {
-                element.pause();
-            });
+            //// Do something else when an element leaves
+            //os.on('leave', 'video', (element, event) => {
+            //    element.pause();
+            //});
         }
     });
 }
@@ -182,7 +182,7 @@ function openShare(url) {
     ZaloSocialSDK.reload(); // Zalo sdk phải reload lại mới cập nhật data-href mới
 }
 
-//var documentTitle = document.title;
+var documentTitle = document.title;
 //window.addEventListener('popstate', (event) => {
 
 //    try {
