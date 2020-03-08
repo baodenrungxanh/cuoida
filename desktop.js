@@ -14,7 +14,11 @@ function displayVideo(id) {
         $(`#news-${id} video `).attr('poster', videoData.poster);
         $(`#news-${id} video `).attr('height', $("#post-list").width() * videoData.height / videoData.width);
 
-       
+        $("video:not([parsed='true'])").each(function () {
+            this.onloadedmetadata = function (e) {
+               
+            }
+        });
     } catch (e) {
         alert(e)
     }
