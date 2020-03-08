@@ -52,3 +52,9 @@ function convert(id) {
 
 
 
+
+
+// Nếu isForceLoadMore == true, thì lần loadMore trước chưa hoàn tất cũng cho phép load more
+function requestLoadMore() {
+   
+}
