@@ -46,3 +46,8 @@ function convert(id) {
     document.getElementById("post-date-" + id).innerHTML = (moment(document.querySelector("div[id='id-" + id + "'] time").getAttribute("datetime")).startOf('minute ').fromNow());
 }
 
+
+
+var allowLoadMore = true;
+var loadTimes = 0;
+var nextLink = "";
