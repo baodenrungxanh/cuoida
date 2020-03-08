@@ -43,8 +43,3 @@ function convert(id) {
 }
 
 
-
-var allowLoadMore = true;
-var loadTimes = 0;
-var nextLink = "";
-
