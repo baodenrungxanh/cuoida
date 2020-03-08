@@ -53,27 +53,6 @@ var loadTimes = 0;
 var nextLink = "";
 
 
-$(document).ready(function () {
-    window.fbAsyncInit = function () {
-        FB.init({
-            appId: '126872728716487',
-            autoLogAppEvents: true,
-            xfbml: true,
-            version: 'v6.0'
-        });
-    };
-
-    $(window).scroll(function () {
-        if ($(window).scrollTop() + $(window).height() > $(document).height() - 1500 && allowLoadMore) {
-            requestLoadMore();
-        }
-    });
-
-    $('#detail-modal').on('hidePrevented.bs.modal', function (e) {
-        history.back();
-    });
-});
-
 var autoReloadTimeout = null;
 // Nếu isForceLoadMore == true, thì lần loadMore trước chưa hoàn tất cũng cho phép load more
 function requestLoadMore(isForceLoadMore = false) {
