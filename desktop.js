@@ -175,12 +175,12 @@ function viewDetail(url) {
     });
 }
 
-function openShare(url) {
-    $("#share-modal .facebook-share-button")[0].setAttribute('href', url);
-    $("#share-modal .zalo-share-button")[0].setAttribute('data-href', url);
-    $("#share-modal").modal('show');
-    ZaloSocialSDK.reload(); // Zalo sdk phải reload lại mới cập nhật data-href mới
-}
+//function openShare(url) {
+//    $("#share-modal .facebook-share-button")[0].setAttribute('href', url);
+//    $("#share-modal .zalo-share-button")[0].setAttribute('data-href', url);
+//    $("#share-modal").modal('show');
+//    ZaloSocialSDK.reload(); // Zalo sdk phải reload lại mới cập nhật data-href mới
+//}
 
 var documentTitle = document.title;
 window.addEventListener('popstate', (event) => {
