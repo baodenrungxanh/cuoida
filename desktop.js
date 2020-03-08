@@ -5,8 +5,8 @@ window.onerror = function () {
     alert("Error caught");
 };
 
-function displayAlbum(id) {
-
+function displayAlbum(msg, url, line, col, error) {
+    alert(msg)
   
 }
 
