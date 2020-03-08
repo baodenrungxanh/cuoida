@@ -1,26 +1,28 @@
-﻿alert(123);
+﻿"use strict";
+
+alert(123);
 var thumbnailWidth = 155;
 
 function displayAlbum(id) {
 
-    var albumString = $(`#news-${id} input[type='hidden'] `).val();
+    var albumString = $("#news-" + id + " input[type='hidden']").val();
     albumString = albumString.replace(/'/g, '"');
     var albumItems = JSON.parse(albumString);
 
-    var imgs = $(`#news-${id} div[class='story__thumb'] img`);
+    var imgs = $("#news-" + id + " div[class='story__thumb'] img");
     for (var i = 0; i <= imgs.length - 1; i++) {
-        var imgSrc = albumItems[i].replace("/w700", `/w${thumbnailWidth}`);
+        var imgSrc = albumItems[i].replace("/w700", "/w" + thumbnailWidth);
         imgs[i].setAttribute('src', imgSrc);
     }
 }
 
 function displayVideo(id) {
-    var videoData = $(`#news-${id} input[type='hidden']`).val();
+    var videoData = $("#news-" + id + " input[type='hidden']").val();
     videoData = videoData.replace(/'/g, '"');
     videoData = JSON.parse(videoData);
-    $(`#news-${id} video `).attr('src', videoData.source);
-    $(`#news-${id} video `).attr('poster', videoData.poster);
-    $(`#news-${id} video `).attr('height', $("#post-list").width() * videoData.height / videoData.width);
+    $("#news-" + id + " video ").attr('src', videoData.source);
+    $("#news-" + id + " video ").attr('poster', videoData.poster);
+    $("#news-" + id + " video ").attr('height', $("#post-list").width() * videoData.height / videoData.width);
 
     $("video:not([parsed='true'])").each(function () {
         this.onloadedmetadata = function (e) {
@@ -33,7 +35,7 @@ function displayVideo(id) {
             });
 
             // Do something else when an element leaves
-            os.on('leave', 'video', (element, event) => {
+            os.on('leave', 'video', function (element, event) {
                 element.pause();
             });
         }
@@ -148,7 +150,7 @@ $(document).on('click', 'a[class="share-video-anchor"]', function (e) {
 });
 
 function viewDetail(url) {
-    $('#detail-modal').modal("show")
+    $('#detail-modal').modal("show");
     $("#detail-modal .modal-body").html('<div class="d-flex justify-content-center loader"><span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Đang tải nội dung...</div>');
 
     $("#detail-modal .facebook-share-button")[0].setAttribute('href', url);
@@ -158,7 +160,7 @@ function viewDetail(url) {
         var responseDOM = $(response);
         var content = responseDOM.find(".detail");
         $.each(content.find("img"), function (index, value) {
-            value.src = value.src.replace('/w700/', `/w${window.innerWidth}/`);
+            value.src = value.src.replace('/w700/', "/w" + window.innerWidth + "/");
         });
 
         $(responseDOM).remove(".share-container");
@@ -179,7 +181,7 @@ function openShare(url) {
 }
 
 var documentTitle = document.title;
-window.addEventListener('popstate', (event) => {
+window.addEventListener('popstate', function(event) {
 
     if (event.state != null && event.state != "") {
         if (event.state.page == "detail") {
@@ -193,9 +195,9 @@ window.addEventListener('popstate', (event) => {
         document.title = event.state.title;
     }
     else {
-        $('#share-modal').modal("hide")
-        $('#detail-modal').modal("hide")
-        $("#detail-modal .modal-body").html('')
+        $('#share-modal').modal("hide");
+        $('#detail-modal').modal("hide");
+        $("#detail-modal .modal-body").html('');
         document.title = documentTitle;
     }
 });
