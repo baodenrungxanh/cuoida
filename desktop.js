@@ -116,64 +116,64 @@ function requestLoadMore(isForceLoadMore) {
     });
 }
 
-//$(document).on('click', 'a[class="story__link"], a[class="view-detail-anchor"]', function (e) {
-//    e.preventDefault();
+$(document).on('click', 'a[class="story__link"], a[class="view-detail-anchor"]', function (e) {
+    e.preventDefault();
 
-//    var url = this.getAttribute('href');
-//    var title = this.getAttribute('title');
+    var url = this.getAttribute('href');
+    var title = this.getAttribute('title');
 
-//    history.pushState({ page: 'detail', url: url, title: title }, "", url);
+    history.pushState({ page: 'detail', url: url, title: title }, "", url);
 
-//    document.title = title;
+    document.title = title;
 
-//    viewDetail(url);
-//});
+    viewDetail(url);
+});
 
-//$(document).on('click', 'a[class*="facebook-share-button"]', function (e) {
-//    e.preventDefault();
+$(document).on('click', 'a[class*="facebook-share-button"]', function (e) {
+    e.preventDefault();
 
-//    FB.ui({
-//        method: 'share',
-//        href: this.getAttribute('href')
-//    }, function (response) {
-//        ga('send', 'event', 'Share', 'Facebook', $(this).attr('href'));
-//    });
-//});
+    FB.ui({
+        method: 'share',
+        href: this.getAttribute('href')
+    }, function (response) {
+        ga('send', 'event', 'Share', 'Facebook', $(this).attr('href'));
+    });
+});
 
-//// Share bài viết facebook trên timeline
-//$(document).on('click', 'a[class="share-video-anchor"]', function (e) {
-//    e.preventDefault();
+// Share bài viết facebook trên timeline
+$(document).on('click', 'a[class="share-video-anchor"]', function (e) {
+    e.preventDefault();
 
-//    var url = this.getAttribute('href');
+    var url = this.getAttribute('href');
 
-//    history.pushState({ page: 'share', url: url }, "", url);
+    history.pushState({ page: 'share', url: url }, "", url);
 
-//    openShare(url);
-//});
+    openShare(url);
+});
 
-//function viewDetail(url) {
-//    $('#detail-modal').modal("show")
-//    $("#detail-modal .modal-body").html('<div class="d-flex justify-content-center loader"><span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Đang tải nội dung...</div>');
+function viewDetail(url) {
+    $('#detail-modal').modal("show")
+    $("#detail-modal .modal-body").html('<div class="d-flex justify-content-center loader"><span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Đang tải nội dung...</div>');
 
-//    $("#detail-modal .facebook-share-button")[0].setAttribute('href', url);
-//    $("#detail-modal .zalo-share-button")[0].setAttribute('data-href', url);
-//    ZaloSocialSDK.reload(); // Zalo sdk phải reload lại mới cập nhật data-href mới
-//    $.get(url, function (response) {
-//        var responseDOM = $(response);
-//        var content = responseDOM.find(".detail");
-//        $.each(content.find("img"), function (index, value) {
-//            value.src = value.src.replace('/w700/', `/w${window.innerWidth}/`);
-//        });
+    $("#detail-modal .facebook-share-button")[0].setAttribute('href', url);
+    $("#detail-modal .zalo-share-button")[0].setAttribute('data-href', url);
+    ZaloSocialSDK.reload(); // Zalo sdk phải reload lại mới cập nhật data-href mới
+    $.get(url, function (response) {
+        var responseDOM = $(response);
+        var content = responseDOM.find(".detail");
+        $.each(content.find("img"), function (index, value) {
+            value.src = value.src.replace('/w700/', `/w${window.innerWidth}/`);
+        });
 
-//        $(responseDOM).remove(".share-container");
+        $(responseDOM).remove(".share-container");
 
-//        $("#detail-modal .modal-body").html(content);
-//    }).done(function () {
-//    }).fail(function () {
-//        $('#detail-modal').modal("hide")
-//    }).always(function () {
-//    });
-//}
+        $("#detail-modal .modal-body").html(content);
+    }).done(function () {
+    }).fail(function () {
+        $('#detail-modal').modal("hide")
+    }).always(function () {
+    });
+}
 
 //function openShare(url) {
 //    $("#share-modal .facebook-share-button")[0].setAttribute('href', url);
