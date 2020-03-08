@@ -54,7 +54,6 @@ function convert(id) {
 
 
 
-var autoReloadTimeout = null;
 // Nếu isForceLoadMore == true, thì lần loadMore trước chưa hoàn tất cũng cho phép load more
 function requestLoadMore(isForceLoadMore = false) {
     try {
